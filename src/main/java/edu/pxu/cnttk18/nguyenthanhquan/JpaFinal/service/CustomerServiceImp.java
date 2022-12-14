@@ -9,36 +9,30 @@ import edu.pxu.cnttk18.nguyenthanhquan.JpaFinal.entity.Customer;
 import edu.pxu.cnttk18.nguyenthanhquan.JpaFinal.repository.CustomerRepository;
 
 @Service
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImp implements CustomerService {
 
 	@Autowired
 	private CustomerRepository customerRepository;
-	
-	@Override
-	public Customer findById(Integer id) {
-		// TODO Auto-generated method stub
+
+	public Customer findById(Long id) {
 		return customerRepository.findById(id).get();
 	}
 
-	@Override
-	public void remove(Integer id) {
+	public void remove(Long id) {
 		customerRepository.deleteById(id);
 	}
 
-	@Override
+
 	public Page<Customer> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
 		return customerRepository.findAll(pageable);
 	}
 
-	@Override
+	public void save(Customer customer) {
+		customerRepository.save(customer);
+	}
+
 	public Page<Customer> findAllByFullNameContaining(String fullName, Pageable pageable) {
-		// TODO Auto-generated method stub
 		return customerRepository.findAllByFullNameContaining(fullName, pageable);
 	}
 
-	@Override
-	public void save(Customer artist) {
-		customerRepository.save(artist);
-	}
 }

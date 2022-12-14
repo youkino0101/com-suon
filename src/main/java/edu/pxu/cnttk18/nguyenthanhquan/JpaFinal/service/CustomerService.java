@@ -7,9 +7,9 @@ import edu.pxu.cnttk18.nguyenthanhquan.JpaFinal.entity.Customer;
 
 public interface CustomerService {
 
-	Customer findById(Integer id);
+	Customer findById(Long id);
 
-	void remove(Integer id);
+	void remove(Long id);
 
 	Page<Customer> findAll(Pageable pageable);
 
@@ -18,4 +18,3 @@ public interface CustomerService {
 	void save(Customer customer);
 
 }
-

@@ -19,10 +19,21 @@
 				<form:hidden path="id" cssClass="form-control" />
 				<div class="card">
 					<div class="card-title text-center">
-						<h3 class="title-card__new">THÊM MỚI HỌA SĨ</h3>
+						<h3 class="title-card__new">THÊM MỚI KHÁCH HÀNG</h3>
 						<hr style="height: 1px;">
 					</div>
 					<div class="card-body">
+						<div class="mb-3">
+							<label for="customerType" class="col-md-3 control-label">Loại KH</label>
+							<form:select path="customerType" class="form-select" required="required">
+								<form:option value="" label="-- Chọn --" />
+								<c:forEach var="tp" items="${customerType}">
+									<form:option value="${tp.id}" label="${tp.name}"
+										selected="${tp.id==customer.customerType.id?'selected':''}" />
+								</c:forEach>
+							</form:select>
+
+						</div>
 						<div class="mb-3">
 							<form:label path="fullName">Họ và tên:</form:label>
 							<form:input path="fullName" cssClass="form-control"
@@ -30,13 +41,19 @@
 							<form:errors path="fullName" cssClass="error-message" />
 
 						</div>
-						
 						<div class="mb-3">
-							<form:label path="email">Email:</form:label>
-							<form:input path="email" cssClass="form-control"
+							<form:label path="birthDay">Ngày sinh:</form:label>
+							<form:input path="birthDay" cssClass="form-control"
 								id="exampleFormControlInput1" />
-							<form:errors path="email" cssClass="error-message" />
+							<form:errors path="birthDay" cssClass="error-message" />
 
+						</div>
+						<div class="mb-3">
+							<form:label path="sex">Giới tính:</form:label><br>
+							<form:radiobutton path="sex" value="Nam" />
+							Nam
+							<form:radiobutton path="sex" value="Nữ" />
+							Nữ
 						</div>
 						<div class="mb-3">
 							<form:label path="phone">Số điện thoại:</form:label>
@@ -45,22 +62,31 @@
 							<form:errors path="phone" cssClass="error-message" />
 
 						</div>
-						
 						<div class="mb-3">
-							<label for="typeCustomer" class="col-md-3 control-label">Loại Khách Hàng: </label>
-							<form:select path="typeCustomer" class="form-select" required="required">
-								<form:option value="" label="-- Chọn --" />
-								<c:forEach var="tp" items="${typeCustomer}">
-									<form:option value="${tp.id}" label="${tp.name}"
-										selected="${tp.id==customer.typeCustomer.id?'selected':''}" />
-								</c:forEach>
-							</form:select>
+							<form:label path="numberCard">CMND:</form:label>
+							<form:input path="numberCard" cssClass="form-control"
+								id="exampleFormControlInput1" />
+							<form:errors path="numberCard" cssClass="error-message" />
+
+						</div>
+						<div class="mb-3">
+							<form:label path="email">email:</form:label>
+							<form:input path="email" cssClass="form-control"
+								id="exampleFormControlInput1" />
+							<form:errors path="email" cssClass="error-message" />
+
+						</div>
+						<div class="mb-3">
+							<form:label path="address">Địa chỉ:</form:label>
+							<form:input path="address" cssClass="form-control"
+								id="exampleFormControlInput1" />
+							<form:errors path="address" cssClass="error-message" />
 
 						</div>
 						<form:button class="btn btn-outline-info" type="submit">
 							<i class="fas fa-user-plus"></i> Thêm mới
 						</form:button>
-						<a href="/jpaFinal/" class="btn btn-outline-warning"><i
+						<a href="/JpaFinal/" class="btn btn-outline-warning"><i
 							class="fas fa-home"></i> Trở về trang chủ</a>
 					</div>
 				</div>

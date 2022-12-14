@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import edu.pxu.cnttk18.nguyenthanhquan.JpaFinal.entity.Customer;
 
 @Repository("customerRepository")
-public interface CustomerRepository extends PagingAndSortingRepository<Customer, Integer> {
+public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
 	Page<Customer> findAllByFullNameContaining(String fullName, Pageable pageable);
 }

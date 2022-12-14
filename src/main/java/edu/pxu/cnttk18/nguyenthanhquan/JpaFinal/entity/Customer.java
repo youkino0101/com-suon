@@ -9,8 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -18,41 +17,58 @@ import javax.validation.constraints.Pattern;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
-	@Column(name = "nameCustomer")
-	@NotNull(message = "không được để trống!!!")
+	@Column(name = "fullName")
 	private String fullName;
 	
-	@Email(message = "email của m ko đúng m phải ghi như thế này này username@smtp.domain")
-	@Column(nullable = true, length = 100)
-	private String email;
+	@Column(name = "birthDay")
+	private String birthDay;
 	
-	// @Pattern(regexp = "/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/", message = "Số điện Thoại ko đúngs")
+	@Column(name = "sex")
+	private String sex;
+	
+	@Column(name = "phone")		
+	//@Pattern(regexp = "/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/", message = "Số điện thoại sai định dạng!")
 	private String phone;
 	
+	@Column(name = "number_card")
+	private String numberCard;
+	
+	@Email(message = "email không đúng định dạng") 
+	private String email;
+	
+	@Column(name = "address")
+	@NotEmpty(message = "Vui lòng nhập địa chỉ!")
+	private String address;
+	
 	@ManyToOne
-	@JoinColumn(name="typeCustomer_id", nullable=false)
-	private TypeCustomer typeCustomer;
+	@JoinColumn(name="customerType", nullable=false)
+	private CustomerType customerType;
 
 	public Customer() {
 		super();
 	}
 
-	public Customer(int id, String fullName, String email, String phone, TypeCustomer typeCustomer) {
+	public Customer(long id, String fullName, String birthDay, String sex, String phone, String numberCard,
+			String email, String address, CustomerType customerType) {
 		super();
 		this.id = id;
 		this.fullName = fullName;
-		this.email = email;
+		this.birthDay = birthDay;
+		this.sex = sex;
 		this.phone = phone;
-		this.typeCustomer = typeCustomer;
+		this.numberCard = numberCard;
+		this.email = email;
+		this.address = address;
+		this.customerType = customerType;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -64,12 +80,20 @@ public class Customer {
 		this.fullName = fullName;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getBirthDay() {
+		return birthDay;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setBirthDay(String birthDay) {
+		this.birthDay = birthDay;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public String getPhone() {
@@ -80,13 +104,36 @@ public class Customer {
 		this.phone = phone;
 	}
 
-	public TypeCustomer getTypeCustomer() {
-		return typeCustomer;
+	public String getNumberCard() {
+		return numberCard;
 	}
 
-	public void setTypeCustomer(TypeCustomer typeCustomer) {
-		this.typeCustomer = typeCustomer;
+	public void setNumberCard(String numberCard) {
+		this.numberCard = numberCard;
 	}
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public CustomerType getCustomerType() {
+		return customerType;
+	}
+
+	public void setCustomerType(CustomerType customerType) {
+		this.customerType = customerType;
+	}
 	
 }

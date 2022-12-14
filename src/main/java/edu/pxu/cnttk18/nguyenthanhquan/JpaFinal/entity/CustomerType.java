@@ -10,38 +10,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "typeCustomers")
-public class TypeCustomer {
+@Table(name = "customerTypes")
+public class CustomerType {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	
-	@Column(name = "typeCustomer")
-	@NotNull(message = "không được để trống!!!")
+	@Column(name = "customerTypeName")
 	private String name;
 	
-	@OneToMany(mappedBy = "typeCustomer", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+	@OneToMany(mappedBy = "customerType", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Customer> customerList;
 
-	public TypeCustomer() {
+	public CustomerType() {
 		super();
 	}
 
-	public TypeCustomer(int id, String name, List<Customer> customerList) {
+	public CustomerType(long id, String name, List<Customer> customerList) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.customerList = customerList;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

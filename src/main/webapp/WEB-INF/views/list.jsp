@@ -11,13 +11,13 @@
 <body>
 	<div class="container">
 		<div class="col-md-offset-1 col-md-12">
-			<h2>Quản lý Họa Sĩ</h2>
+			<h2>Quản lý khách hàng</h2>
 			<hr />
 			<div class="container-form">
 				<a style="text-decoration: none;"
 					href="/JpaFinal/showform">
 					<button type="button" class="btn btn-outline-info">
-						<i class="far fa-address-card"></i> Thêm Họa Sĩ
+						<i class="far fa-address-card"></i> Thêm khách hàng
 					</button>
 				</a>
 				<form class="form-search">
@@ -39,13 +39,15 @@
 			<div class="panel-body">
 				<table class="table table-striped table-bordered">
 					<tr>
-						<th><a href="home?s=id">Mã Họa Sĩ</a></th>
-						<th><a href="home?s=fullName">Họ tên</a></th>
-						<th>Email</th>
+						<th>Mã khách hàng</a></th>
+						<th>Họ tên</a></th>
+						<th>Giới tính</th>
 						<th>Số điện thoại</th>
-						<th>Loại Khách Hàng</th>
-						<th>Hành Động</th>
-						<th>Hành Động</th>
+						<th>email</th>
+						<td>cmnd</td>
+						<th>Nhóm khách hàng</th>
+						<th>Hành động</th>
+						<th>Hành động</th>
 					</tr>
 
 
@@ -60,16 +62,18 @@
 						<tr>
 							<td>${tempCustomer.id}</td>
 							<td>${tempCustomer.fullName}</td>
-							<td>${tempCustomer.email}</td>
+							<td>${tempCustomer.sex}</td>
 							<td>${tempCustomer.phone}</td>
-							<td>${tempCustomer.typeCustomer.name}
+							<td>${tempCustomer.email}</td>
+							<td>${tempCustomer.numberCard}</td>
+												<td>${tempCustomer.customerType.name}
 							<td><a style="text-decoration: none;" href="${updateLink}">
 									<button type="button" class="btn btn-outline-primary">
 										<i class="fas fa-edit"></i>
 									</button>
 							</a> </td>
 							<td><a style="text-decoration: none;" href="${deleteLink}"
-								onclick="if (!(confirm('Bạn có muốn xóa họa sĩ này không?'))) return false">
+								onclick="if (!(confirm('Bạn có muốn xóa khách hàng này không?'))) return false">
 									<button type="button" class="btn btn-outline-danger">
 										<i class="far fa-trash-alt"></i>
 									</button>
@@ -99,8 +103,8 @@
 						</c:if>
 					</ul>
 				</nav>
-				<li class="page-item">Tổng số họa sĩ : ${a.totalElements}
-					họa sĩ</li>
+				<li class="page-item">Tổng số khách hàng : ${a.totalElements}
+					sản phẩm</li>
 			</div>
 		</div>
 	</div>
